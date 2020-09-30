@@ -419,7 +419,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         lists = []
         records = []
 
-        for ii in range(1,11):
+        for ii in range(1,5):
             print(M.Order_Pool)
             valuation = int(max(0,min(np.random.normal(V[step],10),maxprice)))
             Traders[ii].Valuation = valuation
@@ -468,14 +468,14 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
 
         sasur = 0
 
-        for i in range(1,11):
+        for i in range(1,5):
             sasur += Traders[i].Surplus
             
         print('tot',tot,sasur)
         
         
     asur = 0
-    for i in range(1,11):
+    for i in range(1,5):
         asur += Traders[i].Surplus
 
     print(asur)
