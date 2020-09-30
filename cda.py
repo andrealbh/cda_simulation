@@ -34,6 +34,7 @@ class Order_pair:
         return [self.Exe_order, self.Pair_order, self.Exe_price, self.Exe_size, self.Exe_time]
 
     def __repr__(self):
+        
         return repr((self.Exe_order, self.Pair_order, self.Exe_price, self.Exe_size, self.Exe_time))
 
 def Get_surplus(pool,olist,Traders):
@@ -459,7 +460,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
                     Traders[b].Update(epair,1)
 
             records += result
-            print(M.Order_Pool)
+            #print(M.Order_Pool)
 
         oop = copy.deepcopy(lists)
         tot += Get_surplus(mpool,oop,Traders)
