@@ -421,7 +421,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         records = []
 
         for ii in range(1,5):
-            print(M.Order_Pool)
+            #print(M.Order_Pool)
             valuation = int(max(0,min(np.random.normal(V[step],10),maxprice)))
             Traders[ii].Valuation = valuation
             if len(Traders[ii].Outstanding_order.keys()) > 0:
