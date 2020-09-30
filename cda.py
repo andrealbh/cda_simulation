@@ -416,7 +416,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     for step in range(itera):
         
         
-        mpool = copy.deepcopy(M.Order_Pool)
+        
         lists = []
         records = []
 
