@@ -414,11 +414,13 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     
     for step in range(itera):
         
+        
         mpool = copy.deepcopy(M.Order_Pool)
         lists = []
         records = []
 
         for ii in range(1,11):
+            print(M.Order_Pool)
             valuation = int(max(0,min(np.random.normal(V[step],10),maxprice)))
             Traders[ii].Valuation = valuation
             if len(Traders[ii].Outstanding_order.keys()) > 0:
@@ -451,6 +453,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
             result = M.Update(order,step)
 
             records += result
+            print(M.Order_Pool)
 
         oop = copy.deepcopy(lists)
         tot += Get_surplus(mpool,oop,Traders)
