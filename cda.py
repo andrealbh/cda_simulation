@@ -398,17 +398,17 @@ class Market:
             
         return results
 
-def Simu(maxprice,midprice,r,itera,mu,sigma):
+def Simu(maxprice,midprice,r,itera,mu,sigma,num):
     Traders = {}
 
-    for i in range(1,101):
+    for i in range(1,num+1):
         Traders[i] = Trader(i,1, 1000, 0, 0, [0,0,1])
 
     
     V = [midprice]
     s = np.random.normal(mu, sigma, itera)
     rs = list(s)
-    for ittt in range(10):
+    for ittt in range(itera):
         V.append(0.2*V[ittt] + 0.8*V[0] + rs[ittt])
     tot = 0
     M = Market(maxprice)
@@ -420,7 +420,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         lists = []
         records = []
 
-        for ii in range(1,5):
+        for ii in range(1,num+1):
             #print(M.Order_Pool)
             valuation = int(max(0,min(np.random.normal(V[step],10),maxprice)))
             Traders[ii].Valuation = valuation
@@ -467,16 +467,10 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         
         
 
-        sasur = 0
-
-        for i in range(1,5):
-            sasur += Traders[i].Surplus
-            
-        print('tot',tot,sasur)
         
         
     asur = 0
-    for i in range(1,5):
+    for i in range(1,num+1):
         asur += Traders[i].Surplus
 
     print(asur)
@@ -484,7 +478,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     return asur/tot
 
 sr = []
-for i in range(1):
-    sr.append(Simu(1000,500,0.5,10,0,100))
+for i in range(10):
+    sr.append(Simu(1000,500,0.5,10,0,100,20))
 
 print(np.array(sr).mean())
