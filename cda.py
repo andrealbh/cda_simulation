@@ -84,26 +84,30 @@ def Get_surplus(pool,olist,Traders):
     opB = []
     opA = []
     for bb in bps:
-        for bo in B[bb]:
-            opB.append(pool[bo])
+        if bb in B.keys():
+            for bo in B[bb]:
+                opB.append(pool[bo])
             
     for aa in aps:
-        for ao in A[aa]:
-            opA.append(pool[ao])
+        if aa in A.Keys():
+            for ao in A[aa]:
+                opA.append(pool[ao])
             
     lb = len(opB)
     la = len(opA)
     
-    for i in range(min(lb,la)):
-        if opB[i].Price >= opA[i].Price:
-            id1 = opB[i].Index
-            id2 = opA[i].Index
-            
-            s += abs(Traders[id1].Valuation - Traders[id2].Valuation)
-            print('s',s,id1,id2,opB[i].Price,Traders[id1].Valuation,opA[i].Price,Traders[id2].Valuation)
-            
-        else:
-            break
+    if lb*la != 0:
+    
+        for i in range(min(lb,la)):
+            if opB[i].Price >= opA[i].Price:
+                id1 = opB[i].Index
+                id2 = opA[i].Index
+
+                s += abs(Traders[id1].Valuation - Traders[id2].Valuation)
+                print('s',s,id1,id2,opB[i].Price,Traders[id1].Valuation,opA[i].Price,Traders[id2].Valuation)
+
+            else:
+                break
             
     return s
 
