@@ -479,6 +479,6 @@ def Simu(maxprice,midprice,r,itera,mu,sigma,num):
 
 sr = []
 for i in range(100):
-    sr.append(Simu(1000,500,0.5,100,0,100,50))
+    sr.append(Simu(1000,500,0.5,50,0,100,50))
 
 print(np.array(sr).mean())
