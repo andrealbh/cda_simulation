@@ -154,6 +154,7 @@ class Trader:
     def Place_Order(self,neworder):
         action = neworder.Status
         if action == 'Cancel':
+            print('Trader ',self.Index,' place a ',neworder)
             if neworder.Type == 'Ask':
                 self.Available_asset = self.Asset + neworder.Size
                     
