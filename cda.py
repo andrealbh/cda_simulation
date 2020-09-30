@@ -408,7 +408,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     V = [midprice]
     s = np.random.normal(mu, sigma, itera)
     rs = list(s)
-    for ittt in range(50):
+    for ittt in range(10):
         V.append(0.2*V[ittt] + 0.8*V[0] + rs[ittt])
     tot = 0
     M = Market(maxprice)
