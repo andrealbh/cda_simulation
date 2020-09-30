@@ -400,6 +400,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     for ittt in range(50):
         V.append(0.2*V[ittt] + 0.8*V[0] + rs[ittt])
     tot = 0
+    M = Market(maxprice)
     
     for step in range(itera):
         M = Market(maxprice)
@@ -410,6 +411,12 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         for ii in range(1,11):
             valuation = int(max(0,min(np.random.normal(V[step],10),maxprice)))
             Traders[ii].Valuation = valuation
+            if len(Traders[ii].Outstanding_order.keys()) > 0:
+                for outids in Traders[ii].Outstanding_order.keys():
+                    cancelorder = copy.deepcopy(Traders[ii].Outstanding_order[outids])
+                    cancelorder.Status = 'Cancel'
+                    Traders[ii].Place_Order(cancelorder)
+                    M.Update(cancelorder,step)
             #print(valuation)
             stra = Traders[ii].Strategy
             bid = M.Bid_Price
