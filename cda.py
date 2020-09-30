@@ -484,7 +484,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     return asur/tot
 
 sr = []
-for i in range(3):
-    sr.append(Simu(1000,500,0.5,50,0,100))
+for i in range(1):
+    sr.append(Simu(1000,500,0.5,10,0,100))
 
 print(np.array(sr).mean())
