@@ -451,6 +451,12 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
             lists.append(order_c)
             Traders[ii].Place_Order(order)
             result = M.Update(order,step)
+            if result != []:
+                for epair in result:
+                    a = epair.Exe_order.Index
+                    b = epair.Pair_order.Index
+                    Traders[a].Update(epair,0)
+                    Traders[b].Update(epair,1)
 
             records += result
             print(M.Order_Pool)
@@ -458,11 +464,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         oop = copy.deepcopy(lists)
         tot += Get_surplus(mpool,oop,Traders)
         print('tot',tot)
-        for epair in records:
-            a = epair.Exe_order.Index
-            b = epair.Pair_order.Index
-            Traders[a].Update(epair,0)
-            Traders[b].Update(epair,1)
+        
 
         sasur = 0
         
