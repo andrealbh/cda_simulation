@@ -153,15 +153,24 @@ class Trader:
                     
     def Place_Order(self,neworder):
         action = neworder.Status
-        neworder.Index = self.Index
-        self.Outstanding_order[neworder.ID] = neworder
-        print('Trader ',self.Index,' place a ',neworder)
-
-
         if action == 'Cancel':
-            return 0
+            if neworder.Type == 'Ask':
+                self.Available_asset = self.Asset + neworder.Size
+                    
+            elif neworder.Type == 'Bid':
+                self.Available_cash = self.Cash + (neworder.Size * neworder.Price)
+                
+            self.Outstanding_bid = {}
+            self.Outstanding_ask = {}
+            self.Outstanding_order = {}
+            return neworder
         
         elif action == 'Add':
+        
+            neworder.Index = self.Index
+            self.Outstanding_order[neworder.ID] = neworder
+            print('Trader ',self.Index,' place a ',neworder)
+
             if neworder.Category == 'Limit':
                 self.Outstanding_order[neworder.ID] = neworder
                 if neworder.Type == 'Ask':
