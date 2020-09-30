@@ -391,7 +391,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     Traders = {}
 
     for i in range(1,101):
-        Traders[i] = Trader(i,1, 1000, 0, 0, [0,40,1])
+        Traders[i] = Trader(i,1, 1000, 0, 0, [0,0,1])
 
     
     V = [midprice]
