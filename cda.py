@@ -412,7 +412,7 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
         V.append(0.2*V[ittt] + 0.8*V[0] + rs[ittt])
     tot = 0
     M = Market(maxprice)
-    
+    mpool = copy.deepcopy(M.Order_Pool)
     for step in range(itera):
         
         
