@@ -154,7 +154,7 @@ class Trader:
     def Place_Order(self,neworder):
         action = neworder.Status
         if action == 'Cancel':
-            print('Trader ',self.Index,' place a ',neworder)
+            print('Trader ',self.Index,' place a ',neworder,neworder.ID)
             if neworder.Type == 'Ask':
                 self.Available_asset = self.Asset + neworder.Size
                     
@@ -170,7 +170,7 @@ class Trader:
         
             neworder.Index = self.Index
             self.Outstanding_order[neworder.ID] = neworder
-            print('Trader ',self.Index,' place a ',neworder)
+            print('Trader ',self.Index,' place a ',neworder,neworder.ID)
 
             if neworder.Category == 'Limit':
                 self.Outstanding_order[neworder.ID] = neworder
