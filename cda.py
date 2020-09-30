@@ -393,15 +393,17 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
     for i in range(1,101):
         Traders[i] = Trader(i,1, 1000, 0, 0, [0,40,1])
 
-    M = Market(maxprice)
+    
     V = [midprice]
     s = np.random.normal(mu, sigma, itera)
     rs = list(s)
     for ittt in range(50):
         V.append(0.2*V[ittt] + 0.8*V[0] + rs[ittt])
     tot = 0
-    mpool = copy.deepcopy(M.Order_Pool)
+    
     for step in range(itera):
+        M = Market(maxprice)
+        mpool = copy.deepcopy(M.Order_Pool)
         lists = []
         records = []
 
