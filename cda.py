@@ -104,7 +104,7 @@ def Get_surplus(pool,olist,Traders):
                 id2 = opA[i].Index
 
                 s += abs(Traders[id1].Valuation - Traders[id2].Valuation)
-                print('s',s,id1,id2,opB[i].Price,Traders[id1].Valuation,opA[i].Price,Traders[id2].Valuation)
+                #print('s',s,id1,id2,opB[i].Price,Traders[id1].Valuation,opA[i].Price,Traders[id2].Valuation)
 
             else:
                 break
@@ -463,10 +463,15 @@ def Simu(maxprice,midprice,r,itera,mu,sigma):
 
         oop = copy.deepcopy(lists)
         tot += Get_surplus(mpool,oop,Traders)
-        print('tot',tot)
+        
         
 
         sasur = 0
+
+        for i in range(1,11):
+            sasur += Traders[i].Surplus
+            
+        print('tot',tot,sasur)
         
         
     asur = 0
