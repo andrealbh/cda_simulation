@@ -89,7 +89,7 @@ def Get_surplus(pool,olist,Traders):
                 opB.append(pool[bo])
             
     for aa in aps:
-        if aa in A.Keys():
+        if aa in A.keys():
             for ao in A[aa]:
                 opA.append(pool[ao])
             
